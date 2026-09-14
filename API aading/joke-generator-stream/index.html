@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 07A: Async REST API - Joke Stream Engine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="api-page">
+        <header class="header">
+            <div class="badge">Lab Experiment 07A</div>
+            <h1>Asynchronous REST API Joke Stream</h1>
+            <p class="subtitle">Fetching remote payload data via <code>async/await</code>, HTTP promise handling, and dynamic DOM injection.</p>
+        </header>
+
+        <main class="joke-card">
+            <div class="joke-header">
+                <span class="joke-category-badge" id="jokeType">General</span>
+                <span class="joke-id" id="jokeId">#000</span>
+            </div>
+
+            <div class="joke-body">
+                <div class="setup-text" id="jokeSetup">Click the button below to fetch a joke...</div>
+                
+                <div class="punchline-wrap" id="punchlineWrap" style="display: none;">
+                    <div class="divider"></div>
+                    <div class="punchline-text" id="jokePunchline"></div>
+                </div>
+            </div>
+
+            <div class="joke-controls">
+                <button class="btn btn-primary" id="fetchBtn" onclick="fetchNextJoke()">Fetch Random Joke</button>
+                <button class="btn btn-secondary" id="revealBtn" onclick="revealPunchline()" style="display: none;">Reveal Punchline</button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <a href="../meteorological-portal/index.html">Go to Lab 07B: Meteorological Portal →</a> &nbsp;|&nbsp;
+            <a href="../../index.html">← Return to Engineering Lab Suite Hub</a>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 04: CSS Grid Chessboard Architecture</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="chessboard-page">
+        <header class="header">
+            <div class="badge">Lab Experiment 04</div>
+            <h1>CSS Grid Chessboard Engine</h1>
+            <p class="subtitle">A mathematical two-dimensional grid layout system featuring dynamic alternating rank/file coloring and algebraic coordinate mapping.</p>
+        </header>
+
+        <main class="board-container">
+            <div class="controls-toolbar">
+                <div class="control-group">
+                    <label>Board Dimensions:</label>
+                    <div class="toggle-pills">
+                        <button class="pill-btn active" id="btn4x4" onclick="setBoardSize(4)">4 × 4 Matrix</button>
+                        <button class="pill-btn" id="btn8x8" onclick="setBoardSize(8)">8 × 8 Tournament</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Palette Theme:</label>
+                    <div class="toggle-pills">
+                        <button class="pill-btn active" onclick="setBoardTheme('theme-obsidian')">Obsidian & Ivory</button>
+                        <button class="pill-btn" onclick="setBoardTheme('theme-emerald')">Forest Emerald</button>
+                        <button class="pill-btn" onclick="setBoardTheme('theme-classic')">Classic Wood</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chessboard Frame -->
+            <div class="board-frame theme-obsidian" id="boardFrame">
+                <div class="chessboard grid-4" id="chessboard">
+                    <!-- Squares injected via script.js -->
+                </div>
+            </div>
+
+            <div class="status-panel">
+                <span>Selected Square: <strong id="squareInfo">None (Click any square)</strong></span>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <a href="../index.html" class="back-link">← Return to Engineering Lab Suite Hub</a>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

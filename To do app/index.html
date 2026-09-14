@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 06: Task Orchestrator & State Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-wrapper">
+        <header class="app-header">
+            <div class="badge">Lab Experiment 06</div>
+            <h1>Task Orchestrator Suite</h1>
+            <p class="subtitle">Client-side DOM manipulation, reactive state reconciliation, and persistent LocalStorage storage.</p>
+        </header>
+
+        <main class="app-card">
+            <!-- Search and Filter Bar -->
+            <div class="filter-bar">
+                <div class="search-wrap">
+                    <input type="text" id="searchInput" placeholder="Search tasks by keyword..." oninput="handleSearch()">
+                </div>
+                <div class="filter-pills">
+                    <button class="pill-filter active" data-filter="all" onclick="setFilter('all')">All</button>
+                    <button class="pill-filter" data-filter="pending" onclick="setFilter('pending')">Pending</button>
+                    <button class="pill-filter" data-filter="completed" onclick="setFilter('completed')">Completed</button>
+                </div>
+            </div>
+
+            <!-- Task Creation Form -->
+            <form class="task-form" id="taskForm" onsubmit="handleAddTask(event)">
+                <input type="text" id="taskInput" placeholder="What needs to be accomplished?" required autocomplete="off">
+                <select id="prioritySelect">
+                    <option value="medium">Medium Priority</option>
+                    <option value="high">High Priority</option>
+                    <option value="low">Low Priority</option>
+                </select>
+                <button type="submit" class="btn btn-add">Add Task</button>
+            </form>
+
+            <!-- Task Counter & Stats -->
+            <div class="stats-row">
+                <span id="taskCounter">0 tasks listed</span>
+                <button class="btn-text-clear" onclick="clearCompletedTasks()">Clear Completed</button>
+            </div>
+
+            <!-- Task List Container -->
+            <div class="task-list" id="taskList">
+                <!-- Dynamically populated via app.js -->
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <a href="../index.html" class="back-link">← Return to Engineering Lab Suite Hub</a>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 07B: Meteorological Telemetry & Weather Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="weather-wrapper">
+        <header class="header">
+            <div class="badge">Lab Experiment 07B</div>
+            <h1>Meteorological Telemetry Portal</h1>
+            <p class="subtitle">Live REST API queries, asynchronous response parsing, and glassmorphic telemetry cards.</p>
+        </header>
+
+        <main class="weather-container">
+            <!-- Search Bar -->
+            <form class="search-form" id="weatherForm" onsubmit="handleWeatherSearch(event)">
+                <input type="text" id="cityInput" placeholder="Enter target city (e.g. London, Tokyo, New York, Delhi)..." required autocomplete="off">
+                <button type="submit" class="btn-search" id="searchBtn">Lookup Telemetry</button>
+            </form>
+
+            <!-- Weather Card Display -->
+            <div class="telemetry-card" id="telemetryCard">
+                <div class="card-top">
+                    <div>
+                        <h2 class="city-name" id="displayCity">London, UK</h2>
+                        <span class="observation-time" id="observationTime">Updated recently</span>
+                    </div>
+                    <div class="weather-icon-wrap" id="weatherIcon">☀️</div>
+                </div>
+
+                <div class="temp-display">
+                    <span class="temp-number" id="tempValue">21</span>
+                    <span class="temp-unit">°C</span>
+                </div>
+
+                <div class="condition-badge" id="conditionText">Partly Cloudy</div>
+
+                <!-- Metrics Grid -->
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <span class="metric-label">Feels Like</span>
+                        <span class="metric-val" id="feelsLike">22°C</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-label">Humidity</span>
+                        <span class="metric-val" id="humidity">65%</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-label">Wind Velocity</span>
+                        <span class="metric-val" id="windSpeed">14 km/h</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-label">Barometric Press.</span>
+                        <span class="metric-val" id="pressure">1013 mb</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <a href="../joke-generator-stream/index.html">← Lab 07A: Joke Stream API</a> &nbsp;|&nbsp;
+            <a href="../../index.html">← Return to Engineering Lab Suite Hub</a>
+        </footer>
+    </div>
+
+    <script src="weather.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 02: CSS Positioning Systems & Flexbox Navigation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Part 1: Modern Flexbox Navigation Header -->
+    <header class="app-navbar">
+        <div class="nav-brand">
+            <div class="brand-avatar">
+                <img src="avatar.png" alt="Avatar Icon" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80';">
+            </div>
+            <span class="brand-title">DevStudio UI</span>
+        </div>
+
+        <nav class="nav-links">
+            <a href="#overview" class="nav-item active">Overview</a>
+            <a href="#positioning" class="nav-item">Positioning</a>
+            <a href="#flexbox" class="nav-item">Flex Alignment</a>
+            <a href="../index.html" class="nav-item">Lab Directory</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="../Authorisation/index.html" class="btn btn-sm btn-outline">Sign In</a>
+            <a href="../portfolio/index.html" class="btn btn-sm btn-accent">Portfolio</a>
+        </div>
+    </header>
+
+    <main class="page-container">
+        <div class="section-intro">
+            <div class="badge">Lab Experiment 02</div>
+            <h1>CSS Layout Architecture & Positioning Paradigm</h1>
+            <p class="subtitle">Exploring document flow, stacking contexts, coordinate offsets, and flexible box distribution.</p>
+        </div>
+
+        <section class="experiment-grid">
+            <!-- Box Model & Positioning Sandbox -->
+            <div class="card sandbox-card">
+                <div class="card-header">
+                    <h2>Positioning Sandbox: Relative vs Absolute</h2>
+                    <span class="pill">Coordinate Space</span>
+                </div>
+                <p class="card-desc">An absolute element calculates its offsets (top/left/right/bottom) relative to its nearest positioned ancestor.</p>
+                
+                <div class="position-stage">
+                    <div class="outer-container" id="outerContainer">
+                        <span class="stage-label">Container (position: relative)</span>
+                        
+                        <div class="box anchor-box-1" style="top: 20px; left: 20px;">
+                            <span class="box-title">Box A</span>
+                            <div class="inner-badge">badge</div>
+                        </div>
+
+                        <div class="box anchor-box-2" style="top: 20px; right: 20px;">
+                            <span class="box-title">Box B</span>
+                            <div class="inner-badge">badge</div>
+                        </div>
+
+                        <div class="box anchor-box-center" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <span class="box-title">Center Node</span>
+                            <div class="pin-indicator">Pinned</div>
+                        </div>
+
+                        <div class="box anchor-box-3" style="bottom: 20px; left: 20px;">
+                            <span class="box-title">Box C</span>
+                            <div class="inner-badge">badge</div>
+                        </div>
+
+                        <div class="box anchor-box-4" style="bottom: 20px; right: 20px;">
+                            <span class="box-title">Box D</span>
+                            <div class="inner-badge">badge</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="spec-notes">
+                    <code>position: absolute</code> anchors to <code>position: relative</code> parent via bounding geometry.
+                </div>
+            </div>
+
+            <!-- Flexbox Controls & Properties Explorer -->
+            <div class="card flex-card">
+                <div class="card-header">
+                    <h2>Flexbox Justify & Align Properties</h2>
+                    <span class="pill">1D Flex Model</span>
+                </div>
+                <p class="card-desc">Dynamic alignment along the main and cross axes utilizing flex distribution modes.</p>
+
+                <div class="flex-preview-box" id="flexPreview">
+                    <div class="flex-item item-1">Node 1</div>
+                    <div class="flex-item item-2">Node 2</div>
+                    <div class="flex-item item-3">Node 3</div>
+                </div>
+
+                <div class="controls-panel">
+                    <label>Justify Content (Main Axis):</label>
+                    <div class="button-group">
+                        <button class="ctrl-btn active" onclick="setFlexJustify('space-between')">space-between</button>
+                        <button class="ctrl-btn" onclick="setFlexJustify('center')">center</button>
+                        <button class="ctrl-btn" onclick="setFlexJustify('space-around')">space-around</button>
+                    </div>
+
+                    <label style="margin-top: 1rem;">Align Items (Cross Axis):</label>
+                    <div class="button-group">
+                        <button class="ctrl-btn active" onclick="setFlexAlign('center')">center</button>
+                        <button class="ctrl-btn" onclick="setFlexAlign('flex-start')">flex-start</button>
+                        <button class="ctrl-btn" onclick="setFlexAlign('stretch')">stretch</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <a href="../index.html" class="back-link">← Return to Engineering Lab Suite Hub</a>
+        </footer>
+    </main>
+
+    <script>
+        function setFlexJustify(val) {
+            document.getElementById('flexPreview').style.justifyContent = val;
+            event.target.parentElement.querySelectorAll('.ctrl-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function setFlexAlign(val) {
+            document.getElementById('flexPreview').style.alignItems = val;
+            event.target.parentElement.querySelectorAll('.ctrl-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

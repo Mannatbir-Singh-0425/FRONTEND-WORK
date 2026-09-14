@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 10: Elite Developer Portfolio & Showcase</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Navigation Header -->
+    <header class="portfolio-nav">
+        <div class="nav-container">
+            <a href="#hero" class="brand-logo">
+                <span class="logo-accent">&lt;/&gt;</span> DevPortfolio
+            </a>
+            <nav class="nav-menu">
+                <a href="#about">About</a>
+                <a href="#skills">Tech Stack</a>
+                <a href="#projects">Lab Projects</a>
+                <a href="#contact">Contact</a>
+                <a href="../index.html" class="nav-btn">← Lab Directory</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-content">
+                <div class="availability-badge">
+                    <span class="pulse-dot"></span> Available for Web Engineering & Research
+                </div>
+                <h1 class="hero-title">
+                    Building High-Performance Web Applications & <span class="gradient-text">Interactive Interfaces</span>.
+                </h1>
+                <p class="hero-description">
+                    Frontend Engineering Specialist proficient in modern CSS architecture, JavaScript async paradigms, and modular React systems.
+                </p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">Explore Lab Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section class="skills-section" id="skills">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-badge">Core Competencies</span>
+                    <h2>Technical Stack & Tooling</h2>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">⚡</div>
+                        <h3>Modern JavaScript (ES6+)</h3>
+                        <p>Lexical closures, asynchronous Fetch API, Promises, event delegation, and DOM performance.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">⚛️</div>
+                        <h3>React 19 Ecosystem</h3>
+                        <p>Component architecture, reactive state hooks, Vite bundling, and component lifecycle.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🎨</div>
+                        <h3>Advanced CSS3 & Layouts</h3>
+                        <p>CSS Grid, Flexbox, parallax viewports, glassmorphism, responsive token design systems.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🌐</div>
+                        <h3>RESTful APIs & Telemetry</h3>
+                        <p>Asynchronous data hydration, rate-limiting fallbacks, client caching, and JSON streams.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section class="projects-section" id="projects">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-badge">Academic & Lab Milestones</span>
+                    <h2>Featured Coursework Deployments</h2>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-top">
+                            <span class="proj-tag">React / Vite</span>
+                            <span class="proj-id">#01</span>
+                        </div>
+                        <h3>Nexus Market E-Commerce</h3>
+                        <p>Multi-product catalog with live price filtering, interactive cart state drawer, and badge counter.</p>
+                        <a href="../react-applications/02-nexus-market-ecommerce/index.html" class="proj-link">View Module →</a>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-top">
+                            <span class="proj-tag">JavaScript / REST</span>
+                            <span class="proj-id">#02</span>
+                        </div>
+                        <h3>Meteorological Telemetry</h3>
+                        <p>Glassmorphic live weather search engine with condition badges, wind velocity, and pressure telemetry.</p>
+                        <a href="../API aading/meteorological-portal/index.html" class="proj-link">View Module →</a>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-top">
+                            <span class="proj-tag">DOM / LocalStorage</span>
+                            <span class="proj-id">#03</span>
+                        </div>
+                        <h3>Task Orchestrator Board</h3>
+                        <p>Interactive task management pipeline with real-time keyword search, priority tags, and persistence.</p>
+                        <a href="../To do app/index.html" class="proj-link">View Module →</a>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-top">
+                            <span class="proj-tag">CSS Grid System</span>
+                            <span class="proj-id">#04</span>
+                        </div>
+                        <h3>Dynamic Chessboard Matrix</h3>
+                        <p>Two-dimensional grid engine supporting dual board dimensions (4x4, 8x8) and theme switching.</p>
+                        <a href="../Chessborad/index.html" class="proj-link">View Module →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="contact-section" id="contact">
+            <div class="section-container narrow">
+                <div class="section-header">
+                    <span class="section-badge">Direct Inquiries</span>
+                    <h2>Initiate Contact</h2>
+                    <p>Connect regarding front-end engineering projects, lab demonstrations, or collaborative research.</p>
+                </div>
+
+                <form class="contact-form" id="portfolioContact" onsubmit="handleContactSubmit(event)">
+                    <div class="form-row">
+                        <input type="text" id="contactName" placeholder="Your Name / Organization" required>
+                        <input type="email" id="contactEmail" placeholder="Your Email Address" required>
+                    </div>
+                    <textarea id="contactMessage" rows="4" placeholder="Brief project summary or inquiry..." required></textarea>
+                    <button type="submit" class="btn btn-primary btn-block">Transmit Message</button>
+                    <div id="contactFeedback" class="contact-alert"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="portfolio-footer">
+        <p>© 2026 Front-End Engineering Lab Suite. Engineered with clean semantic web standards.</p>
+        <a href="../index.html" class="footer-hub-link">Return to Master Lab Suite Hub</a>
+    </footer>
+
+    <script src="portfolio.js"></script>
+</body>
+</html>

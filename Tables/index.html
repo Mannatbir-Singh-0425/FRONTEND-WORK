@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 01: HTML5 Semantics, Structured Tables & Input Forms</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-container">
+        <header class="page-header">
+            <div class="badge">Lab Experiment 01</div>
+            <h1>HTML5 Semantic Architecture & Structured Tables</h1>
+            <p class="subtitle">Demonstration of multi-dimensional table spanning, accessible input forms, and responsive styling.</p>
+        </header>
+
+        <main class="grid-layout">
+            <!-- Section 1: Complex Spanned Matrix Table -->
+            <section class="card">
+                <div class="card-header">
+                    <h2>Multi-Dimensional Matrix Table</h2>
+                    <span class="tag">Rowspan & Colspan Integration</span>
+                </div>
+                <p class="desc">A structured data matrix demonstrating row and column consolidation using native HTML5 attributes.</p>
+                
+                <div class="table-wrapper">
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Cluster Node</th>
+                                <th>Primary Value</th>
+                                <th>Aggregated Factor</th>
+                                <th>Telemetry State</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Node Alpha</td>
+                                <td>1.00</td>
+                                <td rowspan="2" class="spanned-cell">2.00 (Merged Cluster)</td>
+                                <td><span class="status active">Optimal</span></td>
+                            </tr>
+                            <tr>
+                                <td>Node Beta</td>
+                                <td>1.50</td>
+                                <td><span class="status active">Optimal</span></td>
+                            </tr>
+                            <tr>
+                                <td>Node Gamma</td>
+                                <td>2.00</td>
+                                <td>2.00</td>
+                                <td><span class="status pending">Synchronizing</span></td>
+                            </tr>
+                            <tr>
+                                <td>Node Delta</td>
+                                <td>1.00</td>
+                                <td>1.00</td>
+                                <td><span class="status active">Optimal</span></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2">Consolidated Metric Average</td>
+                                <td colspan="2">1.50 Index</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 2: Accessible Form Module -->
+            <section class="card">
+                <div class="card-header">
+                    <h2>Accessible Credential Verification</h2>
+                    <span class="tag">Form Validation & Constraints</span>
+                </div>
+                <p class="desc">A validated input specification utilizing semantic labels, patterns, and security constraints.</p>
+
+                <form class="styled-form" id="sampleAuthForm" onsubmit="event.preventDefault(); alert('Credentials submitted safely!');">
+                    <div class="form-group">
+                        <label for="accountUsername">Access Identifier</label>
+                        <input type="text" id="accountUsername" name="username" placeholder="e.g. dev_analyst" required autocomplete="username">
+                        <small class="hint">Alphanumeric username or university ID</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="accountPassword">Security Key / Password</label>
+                        <input type="password" id="accountPassword" name="password" minlength="8" placeholder="••••••••••••" required autocomplete="current-password">
+                        <small class="hint">Minimum requirement: 8 characters with numbers & symbols</small>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Authenticate Account</button>
+                        <button type="reset" class="btn btn-secondary">Clear Inputs</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <footer class="page-footer">
+            <a href="../index.html" class="back-link">← Return to Engineering Lab Suite Hub</a>
+        </footer>
+    </div>
+</body>
+</html>

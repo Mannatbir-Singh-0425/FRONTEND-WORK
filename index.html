@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front-End Engineering (FEE-II) Laboratory Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #080c16;
+            --bg-surface: #0f172a;
+            --border: #1e293b;
+            --border-hover: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --primary: #6366f1;
+            --emerald: #10b981;
+            --amber: #f59e0b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.6;
+            padding: 3rem 1.5rem 5rem;
+        }
+
+        .hub-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Hero Banner */
+        .hub-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .hub-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.825rem;
+            font-weight: 700;
+            background: var(--accent-glow);
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            margin-bottom: 1.25rem;
+        }
+
+        .hub-header h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+
+        .gradient-title {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hub-subtitle {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 780px;
+            margin: 0 auto 2rem;
+        }
+
+        .hub-stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .stat-val {
+            color: var(--accent);
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Module Section */
+        .module-section {
+            margin-bottom: 4rem;
+        }
+
+        .module-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .module-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .module-count {
+            font-size: 0.75rem;
+            background: #1e293b;
+            color: var(--text-muted);
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .lab-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 1.15rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lab-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 35px -10px rgba(56, 189, 248, 0.15);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .lab-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            background: var(--accent-glow);
+            padding: 0.2rem 0.55rem;
+            border-radius: 0.35rem;
+        }
+
+        .tech-tag {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .lab-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            line-height: 1.35;
+        }
+
+        .lab-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.55;
+            flex: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1.25rem;
+        }
+
+        .launch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: transparent;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 700;
+            transition: gap 0.2s;
+        }
+
+        .launch-btn:hover {
+            gap: 0.7rem;
+            color: #7dd3fc;
+        }
+
+        .source-pill {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        /* Hub Footer */
+        .hub-footer {
+            margin-top: 5rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            padding-top: 2.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="hub-container">
+        <!-- Hero Header -->
+        <header class="hub-header">
+            <div class="hub-badge">
+                <span>⚡</span> Front-End Engineering II (FEE-II)
+            </div>
+            <h1>
+                Interactive Engineering <span class="gradient-title">Laboratory Suite</span>
+            </h1>
+            <p class="hub-subtitle">
+                A structured, production-grade showcase of modern web engineering experiments, client-side state architectures, asynchronous telemetry, and reactive components.
+            </p>
+
+            <div class="hub-stats-row">
+                <div class="stat-item">Total Modules: <span class="stat-val">12 Experiments</span></div>
+                <div class="stat-item">Ecosystem: <span class="stat-val">Vanilla ES6+ & React 19</span></div>
+                <div class="stat-item">Styling: <span class="stat-val">CSS Grid / Flexbox / Tokens</span></div>
+            </div>
+        </header>
+
+        <!-- Module 1: HTML5 Semantics & CSS Layout Systems -->
+        <section class="module-section">
+            <div class="module-header">
+                <h2>01. Semantic Markup & CSS Layout Architecture</h2>
+                <span class="module-count">4 Labs</span>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Lab 01 -->
+                <div class="lab-card">
+                    <div>
+                        <div class="card-top">
+                            <span class="lab-id">LAB 01</span>
+                            <span class="tech-tag">HTML5 / Table / Forms</span>
+                        </div>
+                        <h3>Semantic Matrix Tables & Auth Inputs</h3>
+                        <p class="lab-desc">Multi-dimensional data matrix exploring row and column consolidation (rowspan/colspan), accessibility constraints, and validated inputs.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source-pill">Tables</span>
+                        <a href="Tables/index.html" class="launch-btn">Launch Lab →</a>
+                    </div>
+                </div>
+
+                <!-- Lab 02 -->
+                <div class="lab-card">
+                    <div>
+                        <div class="card-top">
+                            <span class="lab-id">LAB 02</span>
+                            <span class="tech-tag">CSS Positioning / Flexbox</span>
+                        </div>
+                        <h3>Coordinate Positioning & Flex Alignment</h3>
+                        <p class="lab-desc">Visual interactive sandbox comparing relative vs absolute coordinate systems, stack order, and live 1D flexbox justify/align controls.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source-pill">Layout and position</span>
+                        <a href="Layout and position/index.html" class="launch-btn">Launch Lab →</a>
+                    </div>
+                </div>
+
+                <!-- Lab 03 -->
+                <div class="lab-card">
+                    <div>
+                        <div class="card-top">
+                            <span class="lab-id">LAB 03</span>
+                            <span class="tech-tag">CSS Parallax / Fluid Typography</span>
+                        </div>
+                        <h3>Immersive Parallax Scroll Experience</h3>
+                        <p class="lab-desc">Cinematic multi-layered scroll narrative utilizing fixed background attachments, backdrop filters, and fluid clamp typography.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source-pill">Scrolling</span>
+                        <a href="Scrolling/index.html" class="launch-btn">Launch Lab →</a>
+                    </div>
+                </div>
+
+                <!-- Lab 04 -->
+                <div class="lab-card">
+                    <div>
+                        <div class="card-top">
+                            <span class="lab-id">LAB 04</span>
+                            <span class="tech-tag">CSS Grid / Mathematical Layouts</span>
+                        </div>
+                        <h3>CSS Grid Chessboard Engine</h3>
+                        <p class="lab-desc">Mathematical two-dimensional grid generator supporting 4x4 matrix and 8x8 tournament dimensions with multiple luxury themes.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source-pill">Chessborad</span>
+                        <a href="Chessborad/index.html" class="launch-btn">Launch Lab →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 2: Core JavaScript & Client State -->
+        <section class="module-section">
+            <div class="module-header">
+                <h2>02. Core JavaScript Paradigms & Client-Side State</h2>
+                <span class="module-count">3 Labs</span>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Lab 05A -->
+                <div class="lab-card">
+                    <div>
+                        <div class="card-top">
+                            <span class="lab-id">LAB 05A</span>
+                            <span class="tech-tag">Closures / Functional Scope</span>
+                        </div>
+                        <h3>Lexical Closures & Data Structures</h3>
+                        <p class="lab-desc">Interactive execution stream inspecting persistent lexical environments, state encapsulation, object reflection, and array transformations.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source-pill">concepts in depth</span>
+                        <a href="concepts in depth/closures-and-data-structures/index.html" class="launch-btn">Launch Lab →</a>
+                    </div>
+                </div>
+
+                <!-- Lab 05B -->
+                <div class="lab-card">
+                    <div>
+                        <div class="card-top">
+                            <span class="lab-id">LAB 05B</span>
+                            <span class="tech-tag">Async Timers / Web Audio</span>
+                        </div>
+                        <h3>Precision Chronometer & Countdown</h3>
+                        <p class="lab-desc">Dual-engine countdown and stopwatch featuring interval locks, preset durations, state resumption, and Web Audio synthesizers.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source-pill">concepts in depth</span>
+                        <a href="concepts in depth/precision-chronometer/index.html" class="launch-btn">Launch Lab →</a>
+                    </div>
+                </div>
+
+                <!-- Lab 06 -->
+                <div class="lab-card">
+                    <div>
+                        <div class="card-top">
+                            <span class="lab-id">LAB 06</span>
+                            <span class="tech-tag">DOM Manipulation / LocalStorage</span>
+                        </div>
+                        <h3>Task Orchestrator Board</h3>
+                        <p class="lab-desc">Client-side task management pipeline with real-time keyword filtering, priority categorization, inline editing, and local persistence.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source-pill">To do app</span>
+                        <a href="To do app/index.html" class="launch-btn">Launch Lab →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 3: Asynchronous APIs & Web Systems -->
+        <section class="module-section">
+            <div class="module-header">
+                <h2>03. Asynchronous APIs, Media & Web Portals</h2>
+                <span class="module-count">5 Labs</span>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Lab 07A -->
+                <div class="lab-card">
+                    <div>
+                        <div class="card-top">
+                            <span class="lab-id">LAB 07A</span>
+                            <span class="tech-tag">Fetch API / Async Await</span>
+                        </div>
+                        <h3>Joke Stream REST API</h3>
+                        <p class="lab-desc">Asynchronous remote payload consumer featuring punchline reveal animations, HTTP error guards, and offline cache fallbacks.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source-pill">API aading</span>
+                        <a href="API aading/joke-generator-stream/index.html" class="launch-btn">Launch Lab →</a>
+                    </div>
+                </div>
+
+                <!-- Lab 07B -->
+                <div class="lab-card">
+                    <div>
+                        <div class="card-top">
+                            <span class="lab-id">LAB 07B</span>
+                            <span class="tech-tag">REST Telemetry / Glassmorphism</span>
+                        </div>
+                        <h3>Meteorological Telemetry Portal</h3>
+                        <p class="lab-desc">Glassmorphic weather radar querying live temperature, humidity, wind velocity, and barometric pressure with offline intelligence.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source-pill">API aading</span>
+                        <a href="API aading/meteorological-portal/index.html" class="launch-btn">Launch Lab →</a>
+                    </div>
+                </div>
+
+                <!-- Lab 08 -->
+                <div class="lab-card">
+                    <div>
+                        <div class="card-top">
+                            <span class="lab-id">LAB 08</span>
+                            <span class="tech-tag">Auth UI / Session Storage</span>
+                        </div>
+                        <h3>NexusID Authentication Portal</h3>
+                        <p class="lab-desc">Unified authentication dashboard with smooth tabbed Sign In / Sign Up transitions, credential validation, and password toggling.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source-pill">Authorisation</span>
+                        <a href="Authorisation/index.html" class="launch-btn">Launch Lab →</a>
+                    </div>
+                </div>
+
+                <!-- Lab 09 -->
+                <div class="lab-card">
+                    <div>
+                        <div class="card-top">
+                            <span class="lab-id">LAB 09</span>
+                            <span class="tech-tag">HTML5 Video / DOM Views</span>
+                        </div>
+                        <h3>Interactive Media Player</h3>
+                        <p class="lab-desc">Stateful view-swapping milestone reveal featuring customized HTML5 video controls and event-driven presentation logic.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source-pill">09-interactive-media-lab</span>
+                        <a href="09-interactive-media-lab/index.html" class="launch-btn">Launch Lab →</a>
+                    </div>
+                </div>
+
+                <!-- Lab 10 -->
+                <div class="lab-card">
+                    <div>
+                        <div class="card-top">
+                            <span class="lab-id">LAB 10</span>
+                            <span class="tech-tag">Portfolio Architecture / Responsive</span>
+                        </div>
+                        <h3>Elite Developer Portfolio</h3>
+                        <p class="lab-desc">Modern dark-mode developer portfolio showcasing tech stack proficiencies, featured coursework deployments, and inquiry transmission.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source-pill">portfolio</span>
+                        <a href="portfolio/index.html" class="launch-btn">Launch Lab →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 4: Production React 19 Applications -->
+        <section class="module-section">
+            <div class="module-header">
+                <h2>04. Production React 19 Engineering Suites</h2>
+                <span class="module-count">2 Apps</span>
+            </div>
+
+            <div class="cards-grid">
+                <!-- React App 01 -->
+                <div class="lab-card">
+                    <div>
+                        <div class="card-top">
+                            <span class="lab-id">REACT 01</span>
+                            <span class="tech-tag">React 19 / Vite / Props</span>
+                        </div>
+                        <h3>Product Catalog Engine</h3>
+                        <p class="lab-desc">Component-driven store catalog highlighting immutable prop passing, conditional stock badges, and array transformation pipelines.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source-pill">react-applications/01-product-catalog-engine</span>
+                        <a href="react-applications/01-product-catalog-engine/index.html" class="launch-btn">Open App Entry →</a>
+                    </div>
+                </div>
+
+                <!-- React App 02 -->
+                <div class="lab-card">
+                    <div>
+                        <div class="card-top">
+                            <span class="lab-id">REACT 02</span>
+                            <span class="tech-tag">React 19 / State / E-Commerce</span>
+                        </div>
+                        <h3>Nexus Market E-Commerce Suite</h3>
+                        <p class="lab-desc">Full-featured reactive shopping platform with real-time search, category filters, interactive cart drawer, and dynamic price calculations.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="source-pill">react-applications/02-nexus-market-ecommerce</span>
+                        <a href="react-applications/02-nexus-market-ecommerce/index.html" class="launch-btn">Open App Entry →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hub Footer -->
+        <footer class="hub-footer">
+            <p>Front-End Engineering II (FEE-II) Laboratory Suite. Built with Vanilla Web Standards & React Ecosystem.</p>
+        </footer>
+    </div>
+</body>
+</html>

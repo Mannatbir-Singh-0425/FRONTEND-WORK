@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 05B: Precision Chronometer & Countdown Engine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="timer-page">
+        <header class="header">
+            <div class="badge">Lab Experiment 05B</div>
+            <h1>Precision Chronometer & Countdown</h1>
+            <p class="subtitle">Asynchronous execution scheduling with <code>setInterval</code>, <code>clearInterval</code>, state locks, and audio-visual completion alerts.</p>
+        </header>
+
+        <main class="timer-card">
+            <!-- Mode Selector -->
+            <div class="mode-tabs">
+                <button class="mode-btn active" id="tabCountdown" onclick="switchMode('countdown')">Countdown Timer</button>
+                <button class="mode-btn" id="tabStopwatch" onclick="switchMode('stopwatch')">Stopwatch</button>
+            </div>
+
+            <!-- Digital Display -->
+            <div class="display-container">
+                <div class="time-readout" id="timeDisplay">01:00</div>
+                <div class="status-indicator" id="timerStatus">Ready</div>
+            </div>
+
+            <!-- Countdown Presets -->
+            <div class="presets-row" id="countdownPresets">
+                <button class="preset-pill" onclick="setCountdownDuration(30)">30s</button>
+                <button class="preset-pill active" onclick="setCountdownDuration(60)">1m</button>
+                <button class="preset-pill" onclick="setCountdownDuration(180)">3m</button>
+                <button class="preset-pill" onclick="setCountdownDuration(300)">5m</button>
+            </div>
+
+            <!-- Action Controls -->
+            <div class="actions-row">
+                <button class="btn btn-primary" id="startBtn" onclick="toggleTimer()">Start Timer</button>
+                <button class="btn btn-secondary" id="resetBtn" onclick="resetTimer()">Reset</button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <a href="../closures-and-data-structures/index.html">← Lab 05A: Closures Demo</a> &nbsp;|&nbsp;
+            <a href="../../index.html">← Return to Engineering Lab Suite Hub</a>
+        </footer>
+    </div>
+
+    <script src="timer.js"></script>
+</body>
+</html>

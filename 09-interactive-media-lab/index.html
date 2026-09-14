@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 09: Interactive Media Player & State Reveal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-wrap">
+        <header class="header">
+            <div class="badge">Lab Experiment 09</div>
+            <h1>Interactive HTML5 Media Player</h1>
+            <p class="subtitle">Dynamic DOM view-swapping, programmatic media playback control, and event-driven state transitions.</p>
+        </header>
+
+        <main class="card-wrap">
+            <!-- State 1: Verification Form -->
+            <div class="interactive-card" id="formCard">
+                <h2>Project Milestone Verification</h2>
+                <p class="card-desc">Enter your name or team handle to unlock the verified project telemetry record.</p>
+
+                <form onsubmit="handleReveal(event)">
+                    <div class="input-group">
+                        <label for="userName">Researcher / Engineer Handle</label>
+                        <input type="text" id="userName" placeholder="e.g. Alex" autocomplete="name">
+                    </div>
+                    <button type="submit" class="btn-reveal">Unlock Decrypted Stream</button>
+                </form>
+            </div>
+
+            <!-- State 2: Media Player Container -->
+            <div class="media-card" id="mediaCard" style="display: none;">
+                <div class="reveal-header">
+                    <h3 id="revealTitle">Decrypted Feed</h3>
+                    <span class="live-pill">● Playing</span>
+                </div>
+
+                <div class="video-container">
+                    <video id="revealVideo" controls playsinline>
+                        <source src="media/rick.mp4" type="video/mp4">
+                        Your browser does not support standard MP4 playback.
+                    </video>
+                </div>
+
+                <div class="media-actions">
+                    <button class="btn-secondary" onclick="resetReveal()">Return to Input</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <a href="../index.html" class="back-link">← Return to Engineering Lab Suite Hub</a>
+        </footer>
+    </div>
+
+    <script>
+        function handleReveal(e) {
+            e.preventDefault();
+            let name = document.getElementById('userName').value.trim();
+            if (!name) name = 'Engineer';
+
+            document.getElementById('revealTitle').textContent = `Mission Accomplished, ${name}!`;
+            document.getElementById('formCard').style.display = 'none';
+            
+            const mediaCard = document.getElementById('mediaCard');
+            mediaCard.style.display = 'block';
+
+            const video = document.getElementById('revealVideo');
+            video.currentTime = 0;
+            video.play().catch(e => console.log('Autoplay policy requires user click'));
+        }
+
+        function resetReveal() {
+            const video = document.getElementById('revealVideo');
+            video.pause();
+            document.getElementById('mediaCard').style.display = 'none';
+            document.getElementById('formCard').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
